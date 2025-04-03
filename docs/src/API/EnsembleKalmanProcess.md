@@ -35,10 +35,14 @@ get_Δt
 get_failure_handler
 get_localizer
 get_localizer_type
+get_nan_tolerance
+get_nan_row_values
 construct_initial_ensemble
 update_ensemble!
 sample_empirical_gaussian
 split_indices_by_success
+impute_over_nans
+list_update_groups_over_minibatch
 ```
 
 ## [Learning Rate Schedulers](@id scheduler_api)
@@ -52,3 +56,11 @@ calculate_timestep!
 ```
 
 
+## [Process-specific](@id process_api)
+```@docs
+get_prior_mean
+get_prior_cov
+get_impose_prior
+get_buffer
+get_default_multiplicative_inflation
+```
