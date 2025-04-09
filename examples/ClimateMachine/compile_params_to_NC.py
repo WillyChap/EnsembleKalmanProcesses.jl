@@ -56,7 +56,7 @@ def compile_to_netcdf(directory, output_filename, file_prefix):
         if len(all_params[param]) < num_files:
             all_params[param].extend([np.nan] * (num_files - len(all_params[param])))
     
-    sample_nmb = np.array([f"{i:03d}" for i in range(num_files)], dtype="<U3")
+    sample_nmb = np.array([f"{i:03d}" for i in range(2,num_files+2)], dtype="<U3")
     data_vars = {param: ("nmb_sim", all_params[param]) for param in param_names}
     data_vars["Sample_nmb"] = ("nmb_sim", sample_nmb)
     

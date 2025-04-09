@@ -1,0 +1,34 @@
+2025-04-04 13:03:41: /glade/work/wchapman/cesm_sandboxes/cesm_moving_mountains_04032025/cime/scripts/create_newcase --case ./case_test --mach derecho --res ne30pg3_ne30pg3_mt232 --compset FHISTC_MTso
+ ---------------------------------------------------
+2025-04-04 13:03:41: Compset longname is HIST_CAM70%MT_CLM60%SP_CICE%PRES_DOCN%DOM_MOSART_SGLC_SWAV_SESP
+ ---------------------------------------------------
+2025-04-04 13:03:41: Compset specification file is /glade/work/wchapman/cesm_sandboxes/cesm_moving_mountains_04032025/components/cam//cime_config/config_compsets.xml
+ ---------------------------------------------------
+2025-04-04 13:03:41: Pes     specification file is /glade/work/wchapman/cesm_sandboxes/cesm_moving_mountains_04032025/components/cam//cime_config/config_pes.xml
+ ---------------------------------------------------
+2025-04-04 13:03:41: Forcing is Historic transient 
+ ---------------------------------------------------
+2025-04-04 13:03:41: Using 1 coupler instances
+ ---------------------------------------------------
+2025-04-04 13:03:41: Component ATM is CAM cam7 physics:CAM mid top model 
+ ---------------------------------------------------
+2025-04-04 13:03:41: ATM_GRID is ne30np4.pg3
+ ---------------------------------------------------
+2025-04-04 13:03:41: Component LND is clm6.0:Satellite phenology:
+ ---------------------------------------------------
+2025-04-04 13:03:41: LND_GRID is ne30np4.pg3
+ ---------------------------------------------------
+2025-04-04 13:03:41: Component ICE is Sea ICE (cice) model version 6 :prescribed cice
+ ---------------------------------------------------
+2025-04-04 13:03:41: ICE_GRID is ne30np4.pg3
+ ---------------------------------------------------
+2025-04-04 13:03:41: Component OCN is DOCN   prescribed ocean mode
+ ---------------------------------------------------
+2025-04-04 13:03:41: OCN_GRID is ne30np4.pg3
+ ---------------------------------------------------
+2025-04-04 13:03:41: Component ROF is MOSART: MOdel for Scale Adaptive River Transport
+ ---------------------------------------------------
+2025-04-04 13:03:41: ROF_GRID is r05
+ ---------------------------------------------------
+2025-04-04 13:03:41: ESP_GRID is None
+ ---------------------------------------------------

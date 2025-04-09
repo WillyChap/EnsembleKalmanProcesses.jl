@@ -25,7 +25,7 @@ compset = "FHISTC_MTso"
 #compset = "FHIST"
 #res = "f09_f09_mg17"
 
-paramfile = "/glade/work/wchapman/MovingMountains_Calibrate/examples/ClimateMachine/clima_parameters_008.nc"
+paramfile = "/glade/work/wchapman/MovingMountains_Calibrate/examples/ClimateMachine/clima_parameters_000.nc"
 # paramfile = "./CESM_parameter_229_231.nc"
 
 # ++TE: do not change ensemble_startval
@@ -57,7 +57,7 @@ sstice_yr_end   = 0
 stop_yrs = 3
 rest_yrs = 1
 run_type = "hybrid"
-start_date = "2000-01-01"
+start_date = "2014-01-01"
 
 # REFCASE settings below are optional
 # Will be the same in every case
@@ -148,15 +148,17 @@ def build_base_case(baseroot, basecasename, res, compset, overwrite, cesmroot):
         shutil.rmtree(caseroot)
     with Case(caseroot, read_only=False) as case:
         if not os.path.isdir(caseroot):
+            print('pre case', os.path.basename(caseroot))
             case.create(os.path.basename(caseroot), cesmroot, compset, res,
                         machine_name="derecho",
-                        run_unsupported=True, answer="r",walltime=wall_time, 
-                        project=project)
+                        run_unsupported=True, answer="r", walltime=wall_time, 
+                        project=project, driver='nuopc')
+            print('post case')
             # make sure that changing the casename will not affect these variables                                           
             case.set_value("EXEROOT",case.get_value("EXEROOT", resolved=True))
             case.set_value("RUNDIR",case.get_value("RUNDIR",resolved=True)+".00")
 
-        case.set_value("RUN_TYPE",run_type)
+        #case.set_value("RUN_TYPE",run_type)
         #case.set_value("GET_REFCASE",ref_case_get)
         #case.set_value("RUN_REFCASE",ref_case_name)
         #case.set_value("RUN_REFDIR",ref_case_path)
@@ -180,10 +182,18 @@ def build_base_case(baseroot, basecasename, res, compset, overwrite, cesmroot):
             case.set_value("SSTICE_YEAR_START",sstice_yr_start)
             case.set_value("SSTICE_YEAR_END",sstice_yr_end)
 
+        case.set_value("SSTICE_YEAR_ALIGN", 2014)
+
 #            case.set_value("QUEUE","economy")
 
         rundir = case.get_value("RUNDIR")
         caseroot = case.get_value("CASEROOT")
+
+        print('caseroot:', caseroot)
+        print('caseroot:', caseroot)
+        print('caseroot:', caseroot)
+        print('caseroot:', caseroot)
+        print('caseroot:', caseroot)
         
         print(">> base case_setup...")
         case.case_setup()
@@ -193,6 +203,9 @@ def build_base_case(baseroot, basecasename, res, compset, overwrite, cesmroot):
         #subprocess.check_call("cp "+camSourceModsPath+" "+camSrcPath, shell=True)
         clmSrcPath = os.path.join(caseroot,"SourceMods","src.clm")
         #subprocess.check_call("cp "+clmSourceModsPath+" "+clmSrcPath, shell=True)
+
+
+        
         
         print(">> base case write user_nl_cam...")
         usernlfile = os.path.join(caseroot,"user_nl_cam")
@@ -266,8 +279,12 @@ def _main_func(cesmroot, basecasename):
     num_vars = len(inptrs.variables.keys())-1
     ensemble_num = inptrs['Sample_nmb']
     print('ensemble_num')
-    print(ensemble_num)
+    print('look:',ensemble_num)
     print(ensemble_num[0])
+    print(ensemble_num[1])
+    print(ensemble_num[2])
+    print(ensemble_num[3])
+    
     if specify_user_num_sims:
         num_sims = user_num_sims
 
